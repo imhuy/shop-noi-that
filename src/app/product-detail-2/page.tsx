@@ -1,31 +1,29 @@
 "use client";
-
-import React, { useState } from "react";
-import { NoSymbolIcon, ClockIcon, SparklesIcon } from "@heroicons/react/24/outline";
-import ButtonPrimary from "@/shared/Button/ButtonPrimary";
-import ButtonSecondary from "@/shared/Button/ButtonSecondary";
-import NcImage from "@/shared/NcImage/NcImage";
+import AccordionInfo from "@/components/AccordionInfo";
+import BagIcon from "@/components/BagIcon";
+import IconDiscount from "@/components/IconDiscount";
+import LikeSaveBtns from "@/components/LikeSaveBtns";
+import NcInputNumber from "@/components/NcInputNumber";
+import NotifyAddTocart from "@/components/NotifyAddTocart";
 import ReviewItem from "@/components/ReviewItem";
+import SectionSliderProductCard from "@/components/SectionSliderProductCard";
+import { PRODUCTS } from "@/data/data";
 import detail21JPG from "@/images/products/detail3-1.webp";
 import detail22JPG from "@/images/products/detail3-2.webp";
 import detail23JPG from "@/images/products/detail3-3.webp";
 import detail24JPG from "@/images/products/detail3-4.webp";
-import { PRODUCTS } from "@/data/data";
-import IconDiscount from "@/components/IconDiscount";
-import NcInputNumber from "@/components/NcInputNumber";
-import BagIcon from "@/components/BagIcon";
-import toast from "react-hot-toast";
+import ButtonPrimary from "@/shared/Button/ButtonPrimary";
+import ButtonSecondary from "@/shared/Button/ButtonSecondary";
+import NcImage from "@/shared/NcImage/NcImage";
+import { ClockIcon, NoSymbolIcon, SparklesIcon } from "@heroicons/react/24/outline";
 import { StarIcon } from "@heroicons/react/24/solid";
-import SectionSliderProductCard from "@/components/SectionSliderProductCard";
-import NotifyAddTocart from "@/components/NotifyAddTocart";
-import Image, { StaticImageData } from "next/image";
-import LikeSaveBtns from "@/components/LikeSaveBtns";
-import AccordionInfo from "@/components/AccordionInfo";
-import Policy from "../product-detail/Policy";
-import ModalViewAllReviews from "../product-detail/ModalViewAllReviews";
-import ListingImageGallery from "@/components/listing-image-gallery/ListingImageGallery";
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { Route } from "next";
+import { StaticImageData } from "next/image";
+import { usePathname, useRouter } from "next/navigation";
+import { useState } from "react";
+import toast from "react-hot-toast";
+import ModalViewAllReviews from "../product-detail/ModalViewAllReviews";
+import Policy from "../product-detail/Policy";
 
 const LIST_IMAGES_GALLERY_DEMO: (string | StaticImageData)[] = [
   detail21JPG,
@@ -47,8 +45,8 @@ const ProductDetailPage2 = ({}) => {
   //
   const router = useRouter();
   const thisPathname = usePathname();
-  const searchParams = useSearchParams();
-  const modal = searchParams?.get("modal");
+  // const searchParams = useSearchParams();
+  // const modal = searchParams?.get("modal");
   //
   const [variantActive, setVariantActive] = useState(0);
   const [sizeSelected, setSizeSelected] = useState(sizes ? sizes[0] : "");
@@ -57,9 +55,9 @@ const ProductDetailPage2 = ({}) => {
 
   //
   const handleCloseModalImageGallery = () => {
-    let params = new URLSearchParams(document.location.search);
-    params.delete("modal");
-    router.push(`${thisPathname}/?${params.toString()}` as Route);
+    // let params = new URLSearchParams(document.location.search);
+    // params.delete("modal");
+    // router.push(`${thisPathname}/?${params.toString()}` as Route);
   };
   const handleOpenModalImageGallery = () => {
     router.push(`${thisPathname}/?modal=PHOTO_TOUR_SCROLLABLE` as Route);
@@ -513,7 +511,7 @@ const ProductDetailPage2 = ({}) => {
         onCloseModalViewAllReviews={() => setIsOpenModalViewAllReviews(false)}
       />
 
-      <ListingImageGallery
+      {/* <ListingImageGallery
         isShowModal={modal === "PHOTO_TOUR_SCROLLABLE"}
         onClose={handleCloseModalImageGallery}
         images={LIST_IMAGES_GALLERY_DEMO.map((item, index) => {
@@ -522,7 +520,7 @@ const ProductDetailPage2 = ({}) => {
             url: item,
           };
         })}
-      />
+      /> */}
     </div>
   );
 };

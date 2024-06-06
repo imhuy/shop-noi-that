@@ -28,7 +28,6 @@ const ProductCard: FC<ProductCardProps> = ({ className = "", data = PRODUCTS[0],
   const { name, price, description, sizes, variants, variantType, status, image, rating, id, numberOfReviews, link } =
     data;
 
-  console.log("datadatadatadatadata", link);
   const [variantActive, setVariantActive] = useState(0);
   const [showModalQuickView, setShowModalQuickView] = useState(false);
   const router = useRouter();
